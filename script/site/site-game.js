@@ -1,3 +1,4 @@
+
 this._element = function(id) {
 	if(document.getElementById) {
 		return document.getElementById(id);
@@ -340,11 +341,12 @@ this._relay = function() {
 	this.box.tb.onselectstart = function() { return false };
 	this.box.appendChild(this.box.tb);
 }
-this._load = function(container, title) {
+this._load = function(stage, container, title) {
 	this.box = container;
 	if(this.box == null) return;
 	this.box.bar = title;
 
+	this.box.stage = stage;
 	this.box.counter = 0;
 	this.box.pusher = 0;
 	this.box.history = 0;
@@ -355,23 +357,22 @@ this._load = function(container, title) {
 
 	this.box.rester = 0;
 	this.box.nonedisplay = 0;
+	off = this.box.stage.indexOf("8");
+	var map = this.box.stage.substring(0, off);
+	this.box.stage = this.box.stage.substring(off+1);
 
-	off = this.stage.indexOf("8");
-	var map = this.stage.substring(0, off);
-	this.stage = this.stage.substring(off+1);
-
-	off = this.stage.lastIndexOf("401");
-	var estimate = this.stage.substring(0, off);
-	this.stage = this.stage.substring(off+3);
-	off = this.stage.lastIndexOf("0");
-	var level = this.stage.substring(0, off);
-	var size = this.stage.substring(off+1);
+	off = this.box.stage.lastIndexOf("401");
+	var estimate = this.box.stage.substring(0, off);
+	this.box.stage = this.box.stage.substring(off+3);
+	off = this.box.stage.lastIndexOf("0");
+	var level = this.box.stage.substring(0, off);
+	var size = this.box.stage.substring(off+1);
 
 	this.box.images = new Array();
 	var y = size - 2;
 	for(var x=0; x<14; x++) {
 		this.box.images[x] = new Image();
-		this.box.images[x].src = 'images'+'/'+'box'+'/'+'box'+y+x+'.jpg';
+		this.box.images[x].src = 'image'+'/'+'game'+'/'+'box'+y+x+'.jpg';
 	}
 
 	this.box.estimate = estimate;
@@ -382,7 +383,6 @@ this._load = function(container, title) {
 	if(this.box.x == 32) { this.box.y = 20; this.box.z = 18; }
 	else if(this.box.x == 24) { this.box.y = 15; this.box.z = 24; }
 	else { this.box.y = 10; this.box.z = 36; }
-
 	this._settitle();
 	this._setstatus(false, 0, 0);
 	this._relay();
@@ -399,5 +399,5 @@ this._load = function(container, title) {
 	}
 	this.box.nonedisplay = 0;
 }
-if(this._element('container') != null) this._load(this._element('container'), this._element('titler'));
+//if(this._element('container') != null) this._load(this._element('container'), this._element('titler'));
 

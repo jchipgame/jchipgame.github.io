@@ -6,17 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="script/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet">
   <script src="script/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script>
+  <script src="script/site/site-game.js"></script>
   <script src="script/angular-1.8.2/angular.min.js"></script>
   <script src="script/controll/site-module.js"></script>
   <script src="script/controll/download-app.js"></script>
+  <script src="script/controll/site-game.js"></script>
   
 </head>
 <body ng-app="site-app">
-
-<div>
-  <p>My first expression: {{ 5 + 5 }}</p>
-</div>
-
 
 <div class="container">
   <div data-ng-include="'page/site_header.html?i=9'"></div>
@@ -24,12 +21,14 @@
 
 <div class="container row">
   <div class="col-sm-8">
-  aaa
+    <div data-ng-include="'page/site_game.html?i=2'"></div>
   </div>
   <div class="col-sm-4">
     <div data-ng-include="'page/download-app.html?i=3'"></div>
   </div>
 </div>
+
+
 
 </body>
 </html>
