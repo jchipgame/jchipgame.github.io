@@ -1,7 +1,7 @@
-<div ng-controller="download-app-controll">
-<div class="row" ng-repeat="app in apps">
+<div data-ng-controller="download-app-controll">
+<div class="row" data-ng-repeat="app in apps">
   <div class="col-sm-6">
-	<img src="image/store/{{app.index}}-small.png" class="img-fluid rounded" alt="" />
+	<img data-ng-src="image/store/{{app.index}}-small.png" class="img-fluid rounded" alt="" />
   </div>
   <div class="col-sm-6">
     <p class="bg-primary rounded">{{app.name}}</p>
@@ -13,9 +13,10 @@
 
   <div class="col-sm-12">
     <div class="row">
-      <div class="col-sm-6" ng-repeat="link in app.links track by $index">
-         <img src="image/store/store-{{$index==0?'android':$index==1?'apple':$index==2?'window':$index==3?'steam':'mac'}}.png" class="rounded" />
+      <div class="col-sm-6" data-ng-repeat="link in app.links track by $index">
+         <img data-ng-src="image/store/store-{{$index==0?'android':$index==1?'apple':$index==2?'window':$index==3?'steam':'mac'}}.png" class="rounded" />
       </div>
+    </div>
   </div>
 
 </div>
