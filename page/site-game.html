@@ -1,0 +1,38 @@
+<div class="container" data-ng-controller="site-game-controll">			
+
+<div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="" data-ng-click="selectGame(0)">Collection</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(1)">3 Box</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(2)">4 Box</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(3)">5 Box</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(4)">6 Box</a>
+  </li>
+</ul>
+</div>
+
+<!-- Tab panes -->
+<!-- 
+<div class="tab-content">
+  <div class="tab-pane container active" id="home">.33..</div>
+  <div class="tab-pane container fade" id="menu1">..dd.</div>
+  <div class="tab-pane container fade" id="menu2">.rrc..</div>
+</div>
+ -->
+
+<div>
+{{gameIndex}}
+</div>
+		
+  <div id = "titler"></div>
+  <div id = "container" style="height:360px"></div>
+</div>
