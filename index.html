@@ -9,27 +9,30 @@
   <script src="script/site/site-game.js"></script>
   <script src="script/angular-1.8.2/angular.min.js"></script>
   <script src="script/controll/site-module.js"></script>
+  <script src="script/controll/site-header.js"></script>
   <script src="script/controll/download-app.js"></script>
-  <script src="script/service/site-game.js?1001"></script>
-  <script src="script/controll/site-game.js?1001"></script>
+  <script src="script/service/site-game.js"></script>
+  <script src="script/controll/site-game.js"></script>
 </head>
 
-<body ng-app="site-app">
+<body data-ng-app="site-app" data-ng-controller="site-app-controll">
 
-<div class="container">
-  <div data-ng-include="'page/site-header.html?i=11'"></div>
-</div>
-
-<div class="container row">
-  <div class="col-sm-8">
-    <div data-ng-include="'page/site-game.html?i=11'"></div>
+  <div class="container row col-sm-12">
+    <div data-ng-include="'page/site-header.html'"></div>
   </div>
-  <div class="col-sm-4">
-    <div data-ng-include="'page/download-app.html?i=11'"></div>
+
+  <div class="container row" data-ng-if="page == 'game'">
+    <div class="col-sm-8">
+      <div data-ng-include="'page/site-game.html'"></div>
+    </div>
+    <div class="col-sm-4">
+      <div data-ng-include="'page/download-app.html'"></div>
+    </div>
   </div>
-</div>
 
-
+  <div class="container row col-sm-12" data-ng-if="page == 'download'">
+    <div data-ng-include="'page/site-download.html'"></div>
+  </div>
 
 </body>
 </html>

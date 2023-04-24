@@ -14,3 +14,14 @@ app.filter('integer', function() {
 		return parseInt(value);
 	};
 });
+
+app.controller('site-app-controll', function($scope) {
+    console.log("site-app-controll loading ...");
+
+    $scope.page = "game";
+    $scope.goPage = function(page) {
+        $scope.page = page;
+    	console.log("OO $scope.page == " + $scope.page);
+
+    }
+});
