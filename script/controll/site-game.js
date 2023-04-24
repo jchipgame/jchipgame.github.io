@@ -7,36 +7,32 @@ app.controller('site-game-controll', function($scope, gameService) {
     $scope.stageCount = 0;
     $scope.stageMatrix = null;
     
-    $scope.data = [
-        [], [], [], [], [], [], [], [], []
-    ];
-
-	
     $scope.selectGame = function(gameIndex) {
         $scope.gameIndex = gameIndex;
         $scope.stageIndex = -1;
+        $scope.stageCount = 0;
         $scope.stageMatrix = null;
-        gameService.loadGame($scope.gameIndex).then(function (response) {
-            console.log("UU game gameIndex:" +  $scope.gameIndex);
-            var stages = response;
-            console.log("UU payload data:" +  stages);
+        gameService.loadGame($scope.gameIndex).then(function (stages) {
             $scope.stageCount = stages.length;
             console.log("UU $scope.stageCount:" + $scope.stageCount);
+            console.log("UU $scope.stageIndex:" + $scope.stageIndex);
         });
     };
     
     $scope.selectStage = function(gameIndex, stageIndex) {
+        console.log("XXXX stageIndex:" + stageIndex);
+         	
+    	
+        $scope.gameIndex = gameIndex;
         $scope.stageIndex = stageIndex;
-        gameService.loadGame($scope.gameIndex).then(function (response) {
-            console.log("UU game gameIndex:" +  $scope.gameIndex);
-            var stages = response;
-            console.log("UU payload data:" +  stages);
-            console.log("UU $scope.stageIndex:" +  $scope.stageIndex);
+        $scope.stageCount = 0;
+        $scope.stageMatrix = null;
+        gameService.loadGame($scope.gameIndex).then(function (stages) {
             $scope.stageCount = stages.length;
             $scope.stageMatrix = stages[$scope.stageIndex];
             console.log("UUX $scope.stageCount:" + $scope.stageCount);
             console.log("UUX $scope.stageMatrix:" + $scope.stageMatrix);
-            
+            console.log("UUX $scope.stageIndex:" + $scope.stageIndex);
             $scope.loadGame($scope.stageMatrix);
         });
     };

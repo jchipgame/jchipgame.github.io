@@ -339,6 +339,9 @@ this._relay = function() {
 	this.box.parentNode.onkeydown = new Function("e", "_keydown(e||window.event)");
 	this.box.tb.oncontextmenu = function() { return false };
 	this.box.tb.onselectstart = function() { return false };
+	if(this.box.firstChild) {
+		this.box.removeChild(this.box.firstChild);
+	}
 	this.box.appendChild(this.box.tb);
 }
 this._load = function(stage, container, title) {
