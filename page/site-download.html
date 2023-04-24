@@ -1,14 +1,31 @@
-<div class="row">
-  <div class="col-sm-1">
-	<img src="image/logo/logo-bg.gif" class="img-fluid rounded" alt="www.JChipGame.com" />
+<div data-ng-controller="site-download-controll">
+<div class="row" data-ng-repeat="app in apps">
+  <div class="col-sm-6">
+	<img data-ng-src="image/store/{{app.index}}-small.png" class="img-fluid rounded" alt="" />
   </div>
-  
-  <div class="col-sm-11">
-	<div>
-	download page
-  	</div>
-  	<div>
-      <p class="bg-primary rounded">Welcome to Sokoban (Boxman) Online</p>
+  <div class="col-sm-6">
+    <p class="bg-primary rounded">{{app.name}}</p>
+  </div>
+
+  <div class="col-sm-12">
+    <p class="bg-primary rounded">{{app.introduce}}</p>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-4" data-ng-repeat="link in app.links track by $index">
+         <img data-ng-src="image/store/store-{{$index==0?'android':$index==1?'apple':$index==2?'window':$index==3?'steam':'mac'}}.png" class="rounded" />
+      </div>
     </div>
   </div>
+
+  <div class="col-sm-12">
+    <p class="bg-primary rounded">{{app.description}}</p>
+  </div>
+  
+  <div class="col-sm-12">
+	<img data-ng-src="image/store/{{app.index}}-capture.jpg" class="img-fluid rounded" alt="" />
+  </div>
+  
+</div>
 </div>

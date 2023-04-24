@@ -1,0 +1,26 @@
+{ "apps": [
+  {
+     "index":"boxman",
+     "name":"Sokoban (Boxman) Classic",
+     "introduce":"Classic Sokoban puzzle game, with 306 mentally stimulating levels.",
+     "description":"Classic Sokoban puzzle game, with 306 mentally stimulating levels.",
+     "links":["android", "apple", "window", "steam", "mac"],
+     "video":"www.youtube.com/id=jchip"
+  },
+  {
+     "index":"collection",
+     "name":"Sokoban (Boxman) Collection",
+     "introduce":"Box pushing puzzle game, with 522 collection levels.",
+     "description":"Box pushing puzzle game, with 522 collection levels.",
+     "links":["android", "apple", "window", "steam", "mac"],
+     "video":"www.youtube.com/id=jchip"
+  },
+  {
+     "index":"gianta",
+     "name":"Sokoban Gianta",
+     "introduce":"Box pushing puzzle game, with a giant mentally stimulating level.",
+     "description":"Box pushing puzzle game, with a giant mentally stimulating level.",
+     "links":["android", "apple", "window", "steam", "mac"],
+     "video":"www.youtube.com/id=jchip"
+  }
+] }

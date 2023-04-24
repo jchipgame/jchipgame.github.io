@@ -8,7 +8,6 @@ task copySite(type: Copy) {
     exclude ".gitignore"
     exclude ".project"
     exclude "build.gradle"
-    exclude "image/*.*"
 }
 
 task site {
