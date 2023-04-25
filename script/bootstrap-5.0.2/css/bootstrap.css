@@ -566,6 +566,11 @@ progress {
   height: auto;
 }
 
+.img-fill {
+  width: 100%;
+  padding: 0rem;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
@@ -4633,6 +4638,7 @@ textarea.form-control-lg {
   font-weight: 700;
   line-height: 1;
   color: #fff;
+  cursor: pointer;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -7391,7 +7397,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #0d6efd !important;
+  background-color: #c3d9ff !important;
 }
 
 .bg-secondary {
