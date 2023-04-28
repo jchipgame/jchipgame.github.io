@@ -634,8 +634,8 @@ progress {
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(var(--bs-gutter-y) * -1);
-  margin-right: calc(var(--bs-gutter-x) * -.5);
-  margin-left: calc(var(--bs-gutter-x) * -.5);
+  margin-right: calc(var(--bs-gutter-x) * -.4);
+  margin-left: calc(var(--bs-gutter-x) * -.4);
 }
 .row > * {
   flex-shrink: 0;
@@ -7240,6 +7240,14 @@ textarea.form-control-lg {
   font-size: 1rem !important;
 }
 
+.fs-7 {
+  font-size: 0.90rem !important;
+}
+
+.fs-8 {
+  font-size: 0.75rem !important;
+}
+
 .fst-italic {
   font-style: italic !important;
 }
@@ -10835,21 +10843,24 @@ textarea.form-control-lg {
   }
 
 
-  .img-icon {
- width: 1.25rem !important;
-  height: 1.25rem !important;
+  .m-1 {
+    maring-top: 0.25rem !important;
+    maring-bottom: 0.25rem !important;
+    maring-left: 0.25rem !important;
+    maring-right: 0.25rem !important;
   }
-
   .mb-1 {
     maring-bottom: 0.25rem !important;
   }
   .mt-1 {
-    maring-bottom: 0.25rem !important;
+    maring-top: 0.25rem !important;
   }
   .mt-2 {
-    maring-bottom: 0.5rem !important;
+    maring-top: 0.5rem !important;
   }
-  
+
+
+
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
