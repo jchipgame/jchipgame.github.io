@@ -299,6 +299,7 @@ this._settitle = function() {
 		title += "  Move:"+this.box.counter + "  Push:"+this.box.pusher + "  ";
 //		if(document.all) this.box.bar.innerText = title;
 //		else if(this.box.bar.textContent) this.box.bar.textContent = title; else this.box.title = title;
+		console.log("title:"+title);
 		this.box.bar.innerHTML = title;
 	}
 }

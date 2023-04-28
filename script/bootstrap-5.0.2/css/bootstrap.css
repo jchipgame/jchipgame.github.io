@@ -566,11 +566,6 @@ progress {
   height: auto;
 }
 
-.img-fill {
-  width: 100%;
-  padding: 0rem;
-}
-
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
@@ -10838,6 +10833,23 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
+
+  .img-icon {
+ width: 1.25rem !important;
+  height: 1.25rem !important;
+  }
+
+  .mb-1 {
+    maring-bottom: 0.25rem !important;
+  }
+  .mt-1 {
+    maring-bottom: 0.25rem !important;
+  }
+  .mt-2 {
+    maring-bottom: 0.5rem !important;
+  }
+  
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

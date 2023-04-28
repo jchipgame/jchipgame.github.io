@@ -1,0 +1,23 @@
+<div data-ng-controller="site-banner-controll">
+<div class="row border mb-1" data-ng-repeat="app in apps">
+  <div class="col-sm-2">
+	<img data-ng-src="image/store/{{app.index}}-small.png" class="img-fluid" alt="" />
+  </div>
+  <div class="col-sm-10">
+    <p class="bg-primary rounded ps-1 mt-2">{{app.name}}</p>
+  </div>
+
+  <div class="col-sm-10">
+    <div class="row">
+      <div class="col-sm-4" data-ng-repeat="link in app.links track by $index">
+         <img class="img-fluid rounded" data-ng-src="image/store/store-{{$index==0?'android':$index==1?'apple':$index==2?'window':$index==3?'steam':'mac'}}.png"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 mt-2">
+    <p class="text-primary">{{app.introduce}}</p>
+  </div>
+
+</div>
+</div>
