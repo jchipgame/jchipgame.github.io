@@ -1,7 +1,4 @@
-app.controller('site-game-controll', function($scope, gameService) {
-	
-    console.log("site-game-controll loading");
-    	
+app.controller('site-game-controll', function($scope, gameService) {	
     $scope.gameIndex = 0;
     $scope.stageIndex = -1;
     $scope.stageCount = 0;
@@ -20,9 +17,6 @@ app.controller('site-game-controll', function($scope, gameService) {
     };
     
     $scope.selectStage = function(gameIndex, stageIndex) {
-        console.log("XXXX stageIndex:" + stageIndex);
-         	
-    	
         $scope.gameIndex = gameIndex;
         $scope.stageIndex = stageIndex;
         $scope.stageCount = 0;

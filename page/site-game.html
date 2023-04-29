@@ -1,54 +1,53 @@
-<div class="container" data-ng-controller="site-game-controll">
+<div class="container row" data-ng-controller="site-game-controll">
 
-<div>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-bs-toggle="tab" href="" data-ng-click="selectGame(0)">Collection</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(1)">3 Box</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(2)">4 Box</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(3)">5 Box</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(4)">6 Box</a>
-  </li>
-</ul>
-</div>
+  <div class="col-sm-12">
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link active" data-bs-toggle="tab" href="" data-ng-click="selectGame(0)">Collection</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(1)">3 Box</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(2)">4 Box</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(3)">5 Box</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(4)">6 Box</a>
+	  </li>
+	</ul>
+  </div>
 
 <!-- Tab panes -->
 <!-- 
-<div class="tab-content">
-  <div class="tab-pane container active" id="home">.33..</div>
-  <div class="tab-pane container fade" id="menu1">..dd.</div>
-  <div class="tab-pane container fade" id="menu2">.rrc..</div>
-</div>
+	<div class="tab-content">
+	  <div class="tab-pane container active" id="home">.33..</div>
+	  <div class="tab-pane container fade" id="menu1">..dd.</div>
+	  <div class="tab-pane container fade" id="menu2">.rrc..</div>
+	</div>
  -->
 
-<div data-ng-if="stageIndex < 0" data-ng-init="columns = 8">
+  <div class="col-sm-12" data-ng-if="stageIndex < 0" data-ng-init="columns = 8">
+	<table class="table, col-sm-12 border-start border-end border-bottom">
+	  <tr data-ng-repeat = "rowx in [].constructor(((stageCount+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
+	    <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
+	      <div class="h-25 text-center" data-ng-if="row * columns + col < stageCount">
+	        <a href="" data-ng-click="selectStage(0, row * columns + col)">
+	          {{row * columns + col + 1}}
+	        </a>
+	      </div>
+	    </td>
+	  </tr>
+	</table>
+  </div>
 
-<table class="table, col-sm-12 border-start border-end border-bottom">
-  <tr data-ng-repeat = "rowx in [].constructor(((stageCount+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
-    <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
-      <div class="h-25 text-center" data-ng-if="row * columns + col < stageCount">
-        <a href="" data-ng-click="selectStage(0, row * columns + col)">
-          {{row * columns + col + 1}}
-        </a>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-
-<div class="border-start border-end border-bottom no-focus" style="height:400px" data-ng-if="stageIndex >= 0" >
-  <div id="titler" class="container text-end text-secondary fs-8">aaaa</div>
-  <div id="container" class="no-focus"></div>
-</div>
+  <div class="col-sm-12">
+    <div class="border-start border-end border-bottom no-focus" style="height:400px" data-ng-if="stageIndex >= 0" >
+      <div id="titler" class="container text-end text-secondary fs-8">aaaa</div>
+      <div id="container" class="no-focus"></div>
+    </div>
+  </div>
 
 </div>

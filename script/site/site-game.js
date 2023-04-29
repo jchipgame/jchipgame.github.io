@@ -291,23 +291,16 @@ this._settitle = function() {
 	if(this.box.nonedisplay == 1) return;
 		this.box.bar.innerHTML = "gghhj";
 	var title = "";
-	
-			console.log("titledd:"+this.box.level);
-	
 	if(this.box.level=="*") {
 //		title = " Steps:"+this.box.counter + "  ";
 //		this.box.title = title;
 	}
 	else {
-		console.log("title:"+1222);
 		var level = parseInt(this.box.level);
-		console.log("rrtt:"+1222);
 		if(isNaN(level)) return;
-		console.log("rr55:"+1222);
 		title += "Level: "+(level+1)+"  Move: "+this.box.counter + "  Push: "+this.box.pusher + "  ";
 //		if(document.all) this.box.bar.innerText = title;
 //		else if(this.box.bar.textContent) this.box.bar.textContent = title; else this.box.title = title;
-		console.log("title:"+title);
 		this.box.bar.innerHTML = title;
 	}
 }

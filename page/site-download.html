@@ -2,7 +2,7 @@
 <div class="col-sm-5-5 mb-4 border-bottom" data-ng-repeat="app in apps">
 
   <div class="mt-1">
-    <table class="table-borderless w-100">
+    <table class="table-borderless">
       <tr>
         <td class="pt-1 pe-1" style="width: 3.00rem">
           <img data-ng-src="image/store/{{app.index}}-small.png" class="img-fluid rounded" alt="" />
@@ -21,7 +21,7 @@
   </div>
 
   <div class="mt-1">
-    <table class="table-borderless w-100" data-ng-init="columns = 3">
+    <table class="table-borderless" data-ng-init="columns = 3">
       <tr data-ng-repeat = "rowx in [].constructor(((app.links.length+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
         <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
           <div data-ng-init="n = row*columns+col">
