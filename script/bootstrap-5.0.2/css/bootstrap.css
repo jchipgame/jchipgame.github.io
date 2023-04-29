@@ -10843,23 +10843,6 @@ textarea.form-control-lg {
   }
 
 
-  .m-1 {
-    maring-top: 0.25rem !important;
-    maring-bottom: 0.25rem !important;
-    maring-left: 0.25rem !important;
-    maring-right: 0.25rem !important;
-  }
-  .mb-1 {
-    maring-bottom: 0.25rem !important;
-  }
-  .mt-1 {
-    maring-top: 0.25rem !important;
-  }
-  .mt-2 {
-    maring-top: 0.5rem !important;
-  }
-
-
 
 }
 
