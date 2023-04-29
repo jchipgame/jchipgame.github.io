@@ -6,16 +6,13 @@
 	    <a class="nav-link active" data-bs-toggle="tab" href="" data-ng-click="selectGame(0)">Collection</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(1)">3 Box</a>
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(1)">2-3 Box</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(2)">4 Box</a>
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(2)">3-4 Box</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(3)">5 Box</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(4)">6 Box</a>
+	    <a class="nav-link" data-bs-toggle="tab" href="" data-ng-click="selectGame(3)">5-6 Box</a>
 	  </li>
 	</ul>
   </div>
@@ -29,7 +26,7 @@
 	</div>
  -->
 
-  <div class="col-sm-12" data-ng-if="stageIndex < 0" data-ng-init="columns = 8">
+  <div class="col-sm-12" data-ng-if="stageIndex < 0" data-ng-init="columns = 10">
 	<table class="table, col-sm-12 border-start border-end border-bottom">
 	  <tr data-ng-repeat = "rowx in [].constructor(((stageCount+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
 	    <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
