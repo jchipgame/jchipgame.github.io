@@ -285,18 +285,26 @@ this._setsteps = function(steps) {
 	this.box.history = steps.length;
 }
 this._settitle = function() {
+		this.box.bar.innerHTML = "oooa";
+
 	if(this.box.bar == null) return;
 	if(this.box.nonedisplay == 1) return;
+		this.box.bar.innerHTML = "gghhj";
 	var title = "";
+	
+			console.log("titledd:"+this.box.level);
+	
 	if(this.box.level=="*") {
 //		title = " Steps:"+this.box.counter + "  ";
 //		this.box.title = title;
 	}
 	else {
+		console.log("title:"+1222);
 		var level = parseInt(this.box.level);
+		console.log("rrtt:"+1222);
 		if(isNaN(level)) return;
-		title = (level<306)?(" Level:"+(level+1)):("Bonus:"+(level%306+1));
-		title += "  Move:"+this.box.counter + "  Push:"+this.box.pusher + "  ";
+		console.log("rr55:"+1222);
+		title += "Level: "+(level+1)+"  Move: "+this.box.counter + "  Push: "+this.box.pusher + "  ";
 //		if(document.all) this.box.bar.innerText = title;
 //		else if(this.box.bar.textContent) this.box.bar.textContent = title; else this.box.title = title;
 		console.log("title:"+title);
@@ -345,11 +353,12 @@ this._relay = function() {
 	}
 	this.box.appendChild(this.box.tb);
 }
-this._load = function(stage, container, title) {
+this._load = function(level, stage, container, title) {
 	this.box = container;
 	if(this.box == null) return;
 	this.box.bar = title;
 
+	this.box.level = level;
 	this.box.stage = stage;
 	this.box.counter = 0;
 	this.box.pusher = 0;
@@ -369,7 +378,6 @@ this._load = function(stage, container, title) {
 	var estimate = this.box.stage.substring(0, off);
 	this.box.stage = this.box.stage.substring(off+3);
 	off = this.box.stage.lastIndexOf("0");
-	var level = this.box.stage.substring(0, off);
 	var size = this.box.stage.substring(off+1);
 
 	this.box.images = new Array();
@@ -380,7 +388,6 @@ this._load = function(stage, container, title) {
 	}
 
 	this.box.estimate = estimate;
-	this.box.level = level;
 		
 	this.box.map = map;
 	this.box.x = size*8;

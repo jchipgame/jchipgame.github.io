@@ -33,12 +33,12 @@ app.controller('site-game-controll', function($scope, gameService) {
             console.log("UUX $scope.stageCount:" + $scope.stageCount);
             console.log("UUX $scope.stageMatrix:" + $scope.stageMatrix);
             console.log("UUX $scope.stageIndex:" + $scope.stageIndex);
-            $scope.loadGame($scope.stageMatrix);
+            $scope.loadGame(stageIndex, $scope.stageMatrix);
         });
     };
     
-    $scope.loadGame = function(matrix) {
-    	_load(matrix, _element('container'), _element('titler'));
+    $scope.loadGame = function(index, matrix) {
+    	_load(index, matrix, _element('container'), _element('titler'));
     }
     
     $scope.selectStage(0, 0);
