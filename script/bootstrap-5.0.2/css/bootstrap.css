@@ -328,6 +328,10 @@ select {
   cursor: pointer;
 }
 
+[role=default] {
+  cursor: default;
+}
+
 select {
   word-wrap: normal;
 }
@@ -10842,6 +10846,9 @@ textarea.form-control-lg {
     display: none !important;
   }
 
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
   .no-focus-style {
     border: 0px solid transparent !important;
   }
