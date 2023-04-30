@@ -22,7 +22,9 @@
       <tr data-ng-repeat = "rowx in [].constructor(((app.links.length+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
         <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
           <div data-ng-init="n = row*columns+col">
-            <img class="img-fluid rounded" data-ng-src="image/store/store-{{n==0?'android':n==1?'apple':n==2?'window':n==3?'steam':'mac'}}.png"/>
+            <div data-ng-if ="n < app.links.length">
+              <img class="img-fluid rounded" data-ng-src="image/store/store-{{n==0?'android':n==1?'apple':n==2?'window':n==3?'steam':'mac'}}.png" data-ng-click="download(app.links[n])"/>
+            </div>
           </div>
         </td>
       </tr>
