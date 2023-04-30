@@ -1,19 +1,18 @@
 app.controller('site-game-controll', function($scope, gameService) {	
+    $scope.stages = null;
+    
     $scope.gameIndex = 0;
-    $scope.stageIndex = -1;
+    $scope.stageIndex = 0;
     $scope.stageCount = 0;
     $scope.stageMatrix = null;
     
     $scope.selectGame = function(gameIndex) {
         $scope.gameIndex = gameIndex;
         $scope.stageIndex = -1;
-        $scope.stageCount = 0;
         $scope.stageMatrix = null;
-        gameService.loadGame($scope.gameIndex).then(function (stages) {
-            $scope.stageCount = stages.length;
-            console.log("UU $scope.stageCount:" + $scope.stageCount);
-            console.log("UU $scope.stageIndex:" + $scope.stageIndex);
-        });
+        if($scope.stages != null) {
+            $scope.stageCount = $scope.stages[$scope.gameIndex].length;
+        }
     };
     
     $scope.selectStage = function(gameIndex, stageIndex) {
@@ -21,19 +20,20 @@ app.controller('site-game-controll', function($scope, gameService) {
         $scope.stageIndex = stageIndex;
         $scope.stageCount = 0;
         $scope.stageMatrix = null;
-        gameService.loadGame($scope.gameIndex).then(function (stages) {
-            $scope.stageCount = stages.length;
-            $scope.stageMatrix = stages[$scope.stageIndex];
-            console.log("UUX $scope.stageCount:" + $scope.stageCount);
-            console.log("UUX $scope.stageMatrix:" + $scope.stageMatrix);
-            console.log("UUX $scope.stageIndex:" + $scope.stageIndex);
+        
+        if($scope.stages != null) {
+            $scope.stageCount = $scope.stages[$scope.gameIndex].length;
+            $scope.stageMatrix = $scope.stages[$scope.gameIndex][$scope.stageIndex];
             $scope.loadGame(stageIndex, $scope.stageMatrix);
-        });
+        }
     };
     
     $scope.loadGame = function(index, matrix) {
-    	_load(index, matrix, _element('container'), _element('titler'));
+     	_load(index, matrix, _element('container'), _element('titler'));
     }
     
-    $scope.selectStage(0, 0);
+    gameService.loadGame().then(function (stages) {
+    	$scope.stages = stages;
+		$scope.selectStage($scope.gameIndex, $scope.stageIndex); 
+	});
 });

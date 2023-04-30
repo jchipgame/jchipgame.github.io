@@ -5,9 +5,8 @@ app.service('smtpService', function ($q, $http) {
         console.log("siteSmtp service start -- ");
         var deferred = $q.defer();
         if(this.smtp == null) {
-	        $http.get("data/site-smtp.json", { cache: true }).then(function (response) {
+	        $http.get("data/site-smtp.json", { cache: false }).then(function (response) {
 	            this.smtp = response.data
-    console.log("this.smtp -- " + this.smtp);
 	            deferred.resolve(this.smtp);
 	        });
         } else {
