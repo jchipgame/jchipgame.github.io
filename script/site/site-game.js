@@ -250,9 +250,7 @@ this._setvalue = function(x, y, value) {
 			if(this.box.tx == -1) value = 7; else if(this.box.tx == 1) value = 6;	
 			if(this.box.ty == -1) value = 9; else if(this.box.ty == 1) value = 8;	
 			if(this.box.push) value += 4;
-			console.log("value="+value);
 		}
-			console.log("vv value="+value);
 		el.style.backgroundSize = "100% 100%";
 		el.style.backgroundRepeat = "no-repeat";
 		el.style.backgroundImage = "url("+this.box.images[value].src+")";
