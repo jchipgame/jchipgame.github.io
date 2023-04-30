@@ -1,26 +1,25 @@
-<div class="container row" data-ng-controller="site-header-controll">
+<div data-ng-controller="site-header-controll">
 
-  <div class="col-sm-12 mt-1 mb-1">
+  <div class="row mt-1 mb-1">
     <table class="table-borderless w-100">
       <tr>
         <td class="pt-1 pe-1" style="width: 10rem">
      	  <img class="img-fluid " src="image/logo/logo-bg.gif" alt="www.JChipGame.com" />
         </td>
         <td>
-			 <div class="container d-flex justify-content-end">
+			 <div class="d-flex justify-content-end">
 				  <span class="badge ms-1 mt-1 mb-1 btn-primary" data-ng-click="goPage('game')">Game</span>
 			      <span class="badge ms-1 mt-1 mb-1 btn-secondary" data-ng-click="goPage('download')">Download</span>
 			      <span class="badge ms-1 mt-1 mb-1 btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Contact us</span>
-			  	</div>
-				<div class="container">
-		      <p class="bg-primary rounded fw-bold ps-1">Welcome to Sokoban (Boxman) Online</p>
+			 </div>
+			<div>
+		          <p class="bg-primary rounded fw-bold ps-1">Welcome to Sokoban (Boxman) Online</p>
 		    </div>
-					  	
-			  	
 		</td>
       </tr>
     </table>
   </div>
+  
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">

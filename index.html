@@ -18,11 +18,13 @@
 
 <body data-ng-app="site-app" data-ng-controller="site-app-controll">
 
-  <div class="container">
-    <div data-ng-include="'page/site-header.html'"></div>
+  <div class="container row bordered">
+    <div class="col-sm-12">
+      <div data-ng-include="'page/site-header.html'"></div>
+    </div>
   </div>
 
-  <div class="container row" data-ng-if="page == 'game'">
+  <div class="container row bordered" data-ng-if="page == 'game'">
     <div class="col-sm-8">
       <div data-ng-include="'page/site-game.html'"></div>
     </div>
@@ -31,8 +33,10 @@
     </div>
   </div>
 
-  <div class="container" data-ng-if="page == 'download'">
-    <div data-ng-include="'page/site-download.html'"></div>
+  <div class="container row bordered" data-ng-if="page == 'download'">
+    <div class="col-sm-12">
+      <div data-ng-include="'page/site-download.html'"></div>
+    </div>
   </div>
   
   <!--

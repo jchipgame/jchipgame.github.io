@@ -1,6 +1,6 @@
-<div class="container row" data-ng-controller="site-game-controll">
+<div data-ng-controller="site-game-controll">
 
-  <div class="col-sm-12">
+  <div>
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
 	    <a class="nav-link active" data-bs-toggle="tab" href="" data-ng-click="selectGame(0)">Collection</a>
@@ -17,17 +17,8 @@
 	</ul>
   </div>
 
-<!-- Tab panes -->
-<!-- 
-	<div class="tab-content">
-	  <div class="tab-pane container active" id="home">.33..</div>
-	  <div class="tab-pane container fade" id="menu1">..dd.</div>
-	  <div class="tab-pane container fade" id="menu2">.rrc..</div>
-	</div>
- -->
-
-  <div class="col-sm-12" data-ng-if="stageIndex < 0" data-ng-init="columns = 10">
-	<table class="table, col-sm-12 border-start border-end border-bottom">
+  <div data-ng-if="stageIndex < 0" data-ng-init="columns = 10">
+	<table class="table, border-start border-end border-bottom">
 	  <tr data-ng-repeat = "rowx in [].constructor(((stageCount+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
 	    <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
 	      <div class="h-25 text-center" data-ng-if="row * columns + col < stageCount">
@@ -40,15 +31,13 @@
 	</table>
   </div>
 
-  <div class="col-sm-12">
     <div class="no-focus-style border-start border-end border-bottom" style="height:400px" data-ng-if="stageIndex >= 0" >
       <div class="container text-end text-secondary fs-8" id="titler"></div>
       <div class="no-focus-style p-1" tabindex="0" id="container"></div>
     </div>
   
-  	<div class="container" data-ng-if="stageIndex >= 0">  
+  	<div class="ps-1 pt-0" data-ng-if="stageIndex >= 0">  
       <span><font size="-2" color="red"><b>How!</b></font><font size="-2">&nbsp;&nbsp;Mouse:Left-Click(Move) and Right-Click(Push).&nbsp;&nbsp;&nbsp;Keys:<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(0);">Left</span>,<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(1);">Up</span>,<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(3);">Down</span>,<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(2);">Right</span> and <span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:_toward(-1);">BackSpace</span>.</font></span>
     </div>
-  </div>
 
 </div>
