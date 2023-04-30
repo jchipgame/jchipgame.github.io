@@ -250,7 +250,11 @@ this._setvalue = function(x, y, value) {
 			if(this.box.tx == -1) value = 7; else if(this.box.tx == 1) value = 6;	
 			if(this.box.ty == -1) value = 9; else if(this.box.ty == 1) value = 8;	
 			if(this.box.push) value += 4;
+			console.log("value="+value);
 		}
+			console.log("vv value="+value);
+		el.style.backgroundSize = "100% 100%";
+		el.style.backgroundRepeat = "no-repeat";
 		el.style.backgroundImage = "url("+this.box.images[value].src+")";
 	}
 }
@@ -376,10 +380,9 @@ this._load = function(level, stage, container, title) {
 	var size = this.box.stage.substring(off+1);
 
 	this.box.images = new Array();
-	var y = size - 2;
 	for(var x=0; x<14; x++) {
 		this.box.images[x] = new Image();
-		this.box.images[x].src = 'image'+'/'+'game'+'/'+'box'+y+x+'.jpg';
+		this.box.images[x].src = 'image'+'/'+'game'+'/'+'box'+x+'.jpg';
 	}
 
 	this.box.estimate = estimate;
