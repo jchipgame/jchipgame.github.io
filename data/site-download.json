@@ -17,7 +17,7 @@
      "index":"gianta",
      "name":"Sokoban Gianta",
      "introduce":"Box pushing puzzle game, with a giant mentally stimulating level.",
-     "description":"Sokoban Gianta is an implementation of the classic box-pushing puzzle game with a single giant level has the same objective; to push boxes to their destination locations. Enjoy!",
+     "description":"Sokoban Gianta is an implementation of the classic box-pushing puzzle game with a single giant level. Enjoy!",
      "video":"https://www.youtube.com/embed/xEDtrU4i_p8?wmode=opaque",
      "links":[
      	"https://play.google.com/store/apps/details?id=com.jchip.gianta",
@@ -31,8 +31,8 @@
      "index":"collection",
      "name":"Sokoban (Boxman) Collection",
      "introduce":"Box pushing puzzle game, with 522 collection levels.",
-     "description":"Sokomon (Boxman) is a free implementation of the classic box-pushing puzzle game with 654 free to play levels. Enjoy!.",
-     "video":null,
+     "description":"Sokoban (Boxman) Collection is a free implementation of the classic box-pushing puzzle game with 654 free to play levels. Enjoy!.",
+     "video":"",
      "links":["https://play.google.com/store/apps/details?id=com.jchip.sokomon.collection"]
   }
      
