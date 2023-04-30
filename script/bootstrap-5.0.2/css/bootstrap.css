@@ -10851,10 +10851,12 @@ textarea.form-control-lg {
   }
   .no-focus-style {
     border: 0px solid transparent !important;
+    border-radius: 0.25rem !important;
   }
   .no-focus-style:focus {
     outline: none !important;
     border-color: #000000 !important;
+    border-radius: 0.25rem !important;
   }
 
 }

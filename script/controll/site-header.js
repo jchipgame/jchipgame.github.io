@@ -1,19 +1,12 @@
-app.controller('site-header-controll', function($scope) {
+app.controller('site-header-controll', function($scope, smtpService) {
     console.log("site_header-controll loading ... ...");
     $scope.goPage = function(page) {
     	$scope.$parent.goPage(page);
     }
-    
-    $scope.send = function(email) {
-	console.log("222")
-	console.log("222" +  email.address);
-	console.log("222" +  email.message);
-		console.log("222")
-		
-		 var mailSplitted = ['mail', 'to:jchip', 'game@', 'gma', 'il.com'];
-          var link = mailSplitted.join('');
-		console.log("link=="+link);
-		
-		window.open(link+'?subject='+'From JChipGame.com'+'&body=From:'+email.address+'\n'+email.message);
+	
+	$scope.send = function(email) {	
+		console.log("send email ...");
+		email.subject = "Contact us from Sokoban (Boxman) Online:";
+		smtpService.send(email);
 	}
 });

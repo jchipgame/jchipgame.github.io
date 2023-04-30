@@ -5,7 +5,7 @@ app.service('gameService', function ($q, $http) {
         console.log("loadGame service start -- " +  gameIndex);
         var deferred = $q.defer();
         if(this.stages == null) {
-	        $http.get("data/site-game.json", { cache: false }).then(function (response) {
+	        $http.get("data/site-game.json", { cache: true }).then(function (response) {
 	            this.stages = response.data.stages
 	            deferred.resolve(this.stages[gameIndex]);
 	        });
