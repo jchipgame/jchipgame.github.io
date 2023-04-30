@@ -5,7 +5,6 @@ app.controller('site-header-controll', function($scope, smtpService) {
     }
 	
 	$scope.send = function(email) {	
-		console.log("send email ...");
 		email.subject = "Contact us from Sokoban (Boxman) Online:";
 		smtpService.send(email);
 	}

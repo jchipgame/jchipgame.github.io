@@ -16,16 +16,7 @@ app.service('smtpService', function ($q, $http) {
 	}
 	
 	this.send = function(email) {
-		console.log("service send email ...");
 		this.loadSmtp().then(function (smtp) {
-			console.log("smtp.server:" + smtp.server);
-			console.log("smtp.user:" + smtp.user.join(''));
-			console.log("smtp.token:" + smtp.token);
-
-			console.log("email.address:" + email.address);
-			console.log("email.subject:" + email.subject);
-			console.log("email.message:" + email.message);
-				
 			Email.send({
 				Host: smtp.server,
 	        	Username: smtp.user.join(''),
