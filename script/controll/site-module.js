@@ -15,6 +15,12 @@ app.filter('integer', function() {
 	};
 });
 
+app.filter('trustAsResourceUrl', ['$sce', function($sce) {
+    return function(value) {
+        return $sce.trustAsResourceUrl(value);
+    };
+}])
+
 app.controller('site-app-controll', function($scope) {
     console.log("site-app-controll loading ...");
 
