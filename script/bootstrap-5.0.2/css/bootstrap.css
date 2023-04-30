@@ -10847,9 +10847,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 
-  .no-focus{
-     outline: none !important;
-     border-color: #000000 !important;
+  .no-focus-style {
+    border: 0px solid transparent !important;
+  }
+  .no-focus-style:focus {
+    outline: none !important;
+    border-color: #000000 !important;
   }
 
 }

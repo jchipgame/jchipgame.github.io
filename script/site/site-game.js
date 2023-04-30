@@ -347,8 +347,10 @@ this._relay = function() {
 	this.box.appendChild(this.box.tb);
 }
 this._load = function(level, stage, container, title) {
+	if(container == null) return;
+	container.focus();
+	
 	this.box = container;
-	if(this.box == null) return;
 	this.box.bar = title;
 
 	this.box.level = level;

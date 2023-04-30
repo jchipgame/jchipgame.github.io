@@ -41,14 +41,18 @@
   </div>
 
   <div class="col-sm-12">
-    <div class="border-start border-end border-bottom no-focus" style="height:400px" data-ng-if="stageIndex >= 0" >
+    <div class="no-focus-style border-start border-end border-bottom" style="height:400px" data-ng-if="stageIndex >= 0" >
       <div id="titler" class="container text-end text-secondary fs-8">aaaa</div>
-      <div id="container" class="no-focus"></div>
+      <div id="container" class="no-focus-style" tabindex="0"></div>
     </div>
   
-  	<div class="container">  
+  	<div class="container" data-ng-if="stageIndex >= 0">  
       <span><font size="-2" color="red"><b>How!</b></font><font size="-2">&nbsp;&nbsp;Mouse:Left-Click(Move) and Right-Click(Push).&nbsp;&nbsp;&nbsp;Keys:<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(0);">Left</span>,<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(1);">Up</span>,<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(3);">Down</span>,<span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:if(_toward)_toward(2);">Right</span> and <span style="color:blue;cursor:hand" onselectstart="javascript:return false;" onclick="javascript:_toward(-1);">BackSpace</span>.</font></span>
     </div>
   </div>
+
+<div class="no-focus-style bg-warninggh">
+fdgdfgdffgf
+</div>
 
 </div>
