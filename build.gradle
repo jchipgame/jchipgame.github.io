@@ -10,6 +10,24 @@ task copySite(type: Copy) {
     exclude "build.gradle"
 }
 
+task zipSite(type: Zip) {
+	from '.'
+	include '.'
+	include '*/**'
+
+	exclude ".gradle"
+	exclude ".settings"
+	exclude ".gitignore"
+	exclude ".project"
+
+	exclude "build.gradle"
+	exclude "web-site.zip"
+   
+	archiveName 'web-site.zip'
+	destinationDir(file('.'))
+	//https://hpanel.hostinger.com/hosting/jchipgame.com
+}
+
 task site {
     println 'Gradle project start!'
 }
