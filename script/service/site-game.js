@@ -8,12 +8,8 @@ app.service('gameService', function ($q, $http) {
         return deferred.promise;
 	}
     
-    this.asynchCall = function () {
-    	return $q(function(resolve, reject) {
-    		setTimeout(function() {
-    			resolve("ok");
-    		}, 0);
-    	});
+    this.asynchCall = function (task) {
+    	setTimeout(function() { task() }, 0);
     }
 
 });

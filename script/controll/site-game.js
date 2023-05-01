@@ -26,9 +26,7 @@ app.controller('site-game-controll', function($scope, gameService) {
     };
 
     $scope.loadStage = function(stageIndex, stageMatrix) {
-	    gameService.asynchCall().then(function (response) {
-	   		_load(stageIndex, stageMatrix, _element('container'), _element('titler'));
-		});
+	    gameService.asynchCall(function(){ _load(stageIndex, stageMatrix, _element('container'), _element('titler')) });
     }
 
     $scope.initStage = function(gameIndex, stageIndex) {
