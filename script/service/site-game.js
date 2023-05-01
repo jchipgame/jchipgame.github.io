@@ -9,11 +9,11 @@ app.service('gameService', function ($q, $http) {
 	}
     
     this.asynchCall = function () {
-        var deferred = $q.defer();
- 	    $http.get("data/site-smtp.json", { cache: false }).then(function (response) {
-	            deferred.resolve(response.data.stages);
-	    });
-        return deferred.promise;
-	}
+    	return $q(function(resolve, reject) {
+    		setTimeout(function() {
+    			resolve("ok");
+    		}, 0);
+    	});
+    }
 
 });
