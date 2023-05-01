@@ -32,6 +32,10 @@ app.controller('site-game-controll', function($scope, gameService) {
      	_load(index, matrix, _element('container'), _element('titler'));
     }
     
+    $scope.moveStep = function(step) {
+       	if(_toward) _toward(step);
+    }
+    
     gameService.loadGame().then(function (stages) {
     	$scope.stages = stages;
 		$scope.selectStage($scope.gameIndex, $scope.stageIndex); 

@@ -37,21 +37,21 @@
       <div class="rounded d-flex justify-content-center no-focus-style p-1 ms-1 me-1" tabindex="0" id="container"></div>
     </div>
   
-  	<div class="row ps-1 pt-0 mt-0 mb-2" data-ng-show="stageIndex >= 0">  
+  	<div class="row ps-2 pt-0 mt-0 mb-2" data-ng-show="stageIndex >= 0">  
       <div class="col-sm-auto">
-        <font size="-2" color="red"><b>How!</b></font>
         <font size="-2">
-          &nbsp;&nbsp;Mouse:Left-Click(Move) and Right-Click(Push).
+          <b class="text-danger">How!</b>
+          Mouse:Left-Click(Move) and Right-Click(Push).
         </font>
       </div>
       <div class="col-sm-auto">
         <font size="-2">
           Keys:
-          &nbsp;<span class="text-primary cursor-pointer" onclick="javascript:if(_toward)_toward(0);">Left</span>,
-          &nbsp;<span class="text-primary" role="pointer" onclick="javascript:if(_toward)_toward(1);">Up</span>,
-          &nbsp;<span class="text-primary" role="button" onclick="javascript:if(_toward)_toward(3);">Down</span>,
-          &nbsp;<span class="text-primary" role="button" onclick="javascript:if(_toward)_toward(2);">Right</span> and 
-          &nbsp;<span class="text-primary" role="button" onclick="javascript:_toward(-1);">BackSpace</span>.
+          <span class="text-primary" role="button" data-ng-click="moveStep(0)">Left</span>,
+          <span class="text-primary" role="button" data-ng-click="moveStep(1)">Up</span>,
+          <span class="text-primary" role="button" data-ng-click="moveStep(3)">Down</span>,
+          <span class="text-primary" role="button" data-ng-click="moveStep(2)">Right</span> and 
+          <span class="text-primary" role="button" data-ng-click="moveStep(-1)">BackSpace</span>.
         </font>
       </div>
     </div>

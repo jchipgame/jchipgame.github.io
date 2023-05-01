@@ -27,7 +27,5 @@ app.controller('site-app-controll', function($scope) {
     $scope.page = "game";
     $scope.goPage = function(page) {
         $scope.page = page;
-    	console.log("OO $scope.page == " + $scope.page);
-
     }
 });
