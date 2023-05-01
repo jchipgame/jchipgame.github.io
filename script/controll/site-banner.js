@@ -7,7 +7,6 @@ app.controller('site-banner-controll', function($scope, $http) {
 		});
 		
 	$scope.download = function(link) {
-		console.log("download..."+link);
 		window.open(link, '_blank');
 	}		
 });

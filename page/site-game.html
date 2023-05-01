@@ -18,7 +18,7 @@
   </div>
 
   <div class="row pd-2 me-2">
-  <div class="rounded-bottom border-start border-end border-bottom" data-ng-show="stageIndex < 0" data-ng-init="columns = 10">
+  <div class="rounded-bottom border-start border-end border-bottom" data-ng-if="stageIndex < 0" data-ng-init="columns = 10">
 	<table class="table-borderless mb-1 w-100">
 	  <tr data-ng-repeat = "rowx in [].constructor(((stageCount+columns)/columns) | integer) track by $index" data-ng-init="row = $index">
 	    <td data-ng-repeat = "rowx in [].constructor(columns) track by $index" data-ng-init="col = $index">
@@ -32,12 +32,12 @@
 	</table>
   </div>
 
-    <div class="rounded-bottom border-start border-end border-bottom me-4" style="height:400px" data-ng-show="stageIndex >= 0" >
+    <div class="rounded-bottom border-start border-end border-bottom me-4" style="height:400px" data-ng-if="stageIndex >= 0" >
       <div class="container text-end text-secondary fs-8" id="titler"></div>
       <div class="rounded d-flex justify-content-center no-focus-style p-1 ms-1 me-1" tabindex="0" id="container"></div>
     </div>
   
-  	<div class="row ps-2 pt-0 mt-0 mb-2" data-ng-show="stageIndex >= 0">  
+  	<div class="row ps-2 pt-0 mt-0 mb-2" data-ng-if="stageIndex >= 0">  
       <div class="col-sm-auto">
         <font size="-2">
           <b class="text-danger">How!</b>

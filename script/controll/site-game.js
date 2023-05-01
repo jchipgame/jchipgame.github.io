@@ -18,26 +18,29 @@ app.controller('site-game-controll', function($scope, gameService) {
     $scope.selectStage = function(gameIndex, stageIndex) {
         $scope.gameIndex = gameIndex;
         $scope.stageIndex = stageIndex;
-        $scope.stageCount = 0;
-        $scope.stageMatrix = null;
-        
         if($scope.stages != null) {
             $scope.stageCount = $scope.stages[$scope.gameIndex].length;
             $scope.stageMatrix = $scope.stages[$scope.gameIndex][$scope.stageIndex];
-            $scope.loadGame(stageIndex, $scope.stageMatrix);
+            $scope.loadStage(stageIndex, $scope.stageMatrix);
         }
     };
-    
-    $scope.loadGame = function(index, matrix) {
-     	_load(index, matrix, _element('container'), _element('titler'));
+
+    $scope.loadStage = function(stageIndex, stageMatrix) {
+	    gameService.asynchCall().then(function (response) {
+	   		_load(stageIndex, stageMatrix, _element('container'), _element('titler'));
+		});
     }
-    
+
+    $scope.initStage = function(gameIndex, stageIndex) {
+	    gameService.loadStages().then(function (stages) {
+	    	$scope.stages = stages;
+			$scope.selectStage(gameIndex, stageIndex); 
+		});
+    }
+
     $scope.moveStep = function(step) {
        	if(_toward) _toward(step);
     }
     
-    gameService.loadGame().then(function (stages) {
-    	$scope.stages = stages;
-		$scope.selectStage($scope.gameIndex, $scope.stageIndex); 
-	});
+    $scope.initStage($scope.gameIndex, $scope.stageIndex);
 });
