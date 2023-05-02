@@ -37,10 +37,10 @@
       <div class="rounded d-flex justify-content-center no-focus-style p-1 ms-1 me-1" tabindex="0" id="container"></div>
     </div>
   
-  	<div class="row mb-3 text-secondary" data-ng-if="stageIndex >= 0">  
+  	<div class="row mb-4 text-secondary" data-ng-if="stageIndex >= 0">  
       <div class="col-sm-auto">
         <font size="-2">
-          <b class="text-danger ps-1 pe-1">How!</b>
+          <b class="text-danger ps-0 pe-0">How!</b>
           Left-click/Tap(Move) and Right-click/Long-press(Push)
         </font>
       </div>
@@ -49,8 +49,8 @@
           Keys:
           <span class="text-primary" role="button" data-ng-click="moveStep(0)">Left</span>,
           <span class="text-primary" role="button" data-ng-click="moveStep(1)">Up</span>,
-          <span class="text-primary" role="button" data-ng-click="moveStep(3)">Down</span>,
-          <span class="text-primary" role="button" data-ng-click="moveStep(2)">Right</span> and 
+          <span class="text-primary" role="button" data-ng-click="moveStep(2)">Right</span>,
+          <span class="text-primary" role="button" data-ng-click="moveStep(3)">Down</span> and
           <span class="text-primary" role="button" data-ng-click="moveStep(-1)">BackSpace</span>
         </font>
       </div>
