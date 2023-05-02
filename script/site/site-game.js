@@ -15,23 +15,15 @@ this._mousedown = function(ev) {
 	if(ev.type == "mousedown") this.box.mousedown = 1;
 	if(this.box.mousedown != 1) return false;
 	if(this.box.run == 1) return false;
-	
-console.log("this.box.pressMode =" +this.box.pressMode);	
-	
-	
 	this.box.pressMode = button == 2 ? 2 : 0;
 	if(this.box.pressMode == 0) {
-		this.box.pressTimer = setTimeout(function() {
-			this.box.pressMode = 1;
-			this._mouseup(ev);
-		}, 500);
+		this.box.pressTimer = setTimeout(function() { this.box.pressMode = 1; this._mouseup(ev); }, 400);
 	}
 	return false;
 }
 
 this._mouseup = function(ev) {
 	clearTimeout(this.box.pressTimer);
-	console.log("mouse up this.box.pressMode =" +this.box.pressMode);	
 	if(this.box.pressMode >= 0) {
 		var el = ev.target||ev.srcElement;
 		_mapmark(0);
@@ -39,7 +31,7 @@ this._mouseup = function(ev) {
 		else this.box.run = _mapwalk(el.x, el.y) ? 0:-1;
 		if(this.box.run == 0) {
 			_mapmake(el.x, el.y);
-			if(ev.button == 2) _setblock(el.x, el.y, 999);
+			if(this.box.pressMode == 1 || this.box.pressMode == 2) _setblock(el.x, el.y, 999);
 		}
 		_mapmark(1);
 	}
