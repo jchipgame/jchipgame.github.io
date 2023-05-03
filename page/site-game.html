@@ -56,5 +56,23 @@
       </div>
     </div>
   </div>
+  
+  <div class="modal" id="successModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-primary">Level {{stageIndex}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="fs-1 text-center text-secondary">Congratulations!</p> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" data-ng-show="stageIndex < stageCount-1" data-ng-click="goNext()">Next Level</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

@@ -213,6 +213,18 @@ this._manmove = function(tx, ty) {
 	if(!push) this.box.rester =  this.box.counter;
 	if(push) this.box.pusher++;
 	this.box.counter++;
+	
+	this._success();
+	return true;
+}
+this._success = function() {
+	for(var y=0; y<this.box.y; y++) {
+		for(var x=0; x<this.box.x; x++) {
+			var current = _getvalue(x, y);
+			if (current == 2 || current == 4) return false;
+		}
+	}
+	if(this.box.success) this.box.success();
 	return true;
 }
 this._manstep = function() {
@@ -242,7 +254,6 @@ this._toward = function(what) {
 	}
 	_settitle();
 }
-
 this._getman_x = function() {
 	return this.box.man[0];
 }
@@ -389,13 +400,15 @@ this._mapresize = function() {
 		}
 	}
 }
-this._load = function(level, stage, container, title) {
+this._load = function(level, stage, container, title, success) {
 	if(container == null) return;
+
 	this.box = container;
 	this.box.bar = title;
-
 	this.box.level = level;
 	this.box.stage = stage;
+	this.box.success = success;
+
 	this.box.counter = 0;
 	this.box.pusher = 0;
 	this.box.history = 0;
