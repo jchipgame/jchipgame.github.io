@@ -308,11 +308,8 @@ this._setsteps = function(steps) {
 	this.box.history = steps.length;
 }
 this._settitle = function() {
-		this.box.bar.innerHTML = "oooa";
-
 	if(this.box.bar == null) return;
 	if(this.box.nonedisplay == 1) return;
-		this.box.bar.innerHTML = "gghhj";
 	var title = "";
 	if(this.box.level=="*") {
 //		title = " Steps:"+this.box.counter + "  ";
@@ -336,7 +333,6 @@ this._redraw = function() {
 	}
 	_settitle();
 }
-
 this._relay = function() {
 	this.box.images = new Array();
 	for(var x=0; x<14; x++) {
@@ -350,23 +346,16 @@ this._relay = function() {
 	this.box.tb.cellPadding=0; 
 	this.box.tb.style.fontSize = "3pt";
 
-	if(this.box.clientWidth && this.box.clientWidth < this.box.x * this.box.z) {
-		this.box.z = Math.floor(this.box.clientWidth/this.box.x);
-		this.box.z -= this.box.z * this.box.x + 4 > this.box.clientWidth ? 1 : 0;
-	}
-	this.box.tb.style.marginTop = (this.box.z*(this.box.shape*5 - this.box.y)/2 + 4) + "px";
-	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape*5 - this.box.y)/2 + 4) + "px";
-	
 	for(var y=0; y<this.box.y; y++) {
 		var r = this.box.tb.insertRow(y);
 		for(var x=0; x<this.box.x; x++) {
 			var d = r.insertCell(x);
 			d.x = x;
 			d.y = y;
-			d.map = this.box.map.charAt((y+this.box.range.top)*(this.box.shape*8)+(x+this.box.range.start));
+			d.map = this.box.map.charAt((y+this.box.range.top)*(this.box.shape.x)+(x+this.box.range.start));
 			_setvalue(x, y, parseInt(d.map));
-			d.style.width = this.box.z + "px";
-			d.style.height = this.box.z + "px";
+//			d.style.width = this.box.z + "px";
+//			d.style.height = this.box.z + "px";
 			d.style.backgroundSize = "100% 100%";
 			d.style.backgroundRepeat = "no-repeat";
 			d.onmousedown = new Function("e", "_mousedown(e||window.event)");
@@ -381,16 +370,29 @@ this._relay = function() {
 	this.box.parentNode.onkeydown = new Function("e", "_keydown(e||window.event)");
 	this.box.tb.oncontextmenu = function() { return false };
 	this.box.tb.onselectstart = function() { return false };
-	if(this.box.firstChild) {
-		this.box.removeChild(this.box.firstChild);
-	}
-	this.box.appendChild(this.box.tb);
-}
 
+	if(this.box.firstChild) this.box.removeChild(this.box.firstChild);
+	this.box.appendChild(this.box.tb);
+	
+	this._mapresize();
+}
+this._mapresize = function() {
+	if(!this.box.clientWidth) return;
+	this.box.z = Math.floor(this.box.clientWidth/this.box.x);
+	this.box.z = this.box.z <= this.box.shape.z ? this.box.z : this.box.shape.z; 
+	this.box.z -= this.box.z * this.box.x + 4 > this.box.clientWidth ? 1 : 0;
+	this.box.tb.style.marginTop = (this.box.z*(this.box.shape.y - this.box.y)/2 + 4) + "px";
+	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape.y - this.box.y)/2 + 4) + "px";
+	for(var y=0; y<this.box.y; y++) {
+		for(var x=0; x<this.box.x; x++) {
+			var d = this.box.tb.rows[y].cells[x];
+			d.style.width = this.box.z + "px";
+			d.style.height = this.box.z + "px";
+		}
+	}
+}
 this._load = function(level, stage, container, title) {
 	if(container == null) return;
-	container.focus();
-	
 	this.box = container;
 	this.box.bar = title;
 
@@ -409,25 +411,24 @@ this._load = function(level, stage, container, title) {
 	
 	var off = this.box.stage.indexOf("8");
 	this.box.map = this.box.stage.substring(0, off);
-	
+
 	var state = this.box.stage.substring(off+1);
 	off = state.lastIndexOf("401");
 	this.box.estimate = state.substring(0, off);
-	
+
 	state = state.substring(off+3);
 	off = state.lastIndexOf("0");
-	this.box.shape = state.substring(off+1);
+	this.box.shape = { type:2, x:0, y:0, z:0 };
+	this.box.shape.type = state.substring(off+1);
+	this.box.shape.x = this.box.shape.type * 8;
+	this.box.shape.y = this.box.shape.type * 5;
+	this.box.shape.z = 360 / this.box.shape.y;
 
-	this.box.x = this.box.shape*8;
-	if(this.box.x == 32) { this.box.y = 20; this.box.z = 18; }
-	else if(this.box.x == 24) { this.box.y = 15; this.box.z = 24; }
-	else { this.box.y = 10; this.box.z = 36; }
-	
-	this.box.range = { start: this.box.x, end: 0, top: this.box.y, bottom: 0 };
-	for(var y=0; y<this.box.y; y++) {
+	this.box.range = { start: this.box.shape.x, end: 0, top: this.box.shape.y, bottom: 0 };
+	for(var y=0; y<this.box.shape.y; y++) {
 		var wall = false;
-		for(var x=0; x<this.box.x; x++) {
-			var value = parseInt(this.box.map.charAt(y*this.box.x+x));
+		for(var x=0; x<this.box.shape.x; x++) {
+			var value = parseInt(this.box.map.charAt(y*this.box.shape.x+x));
 			if(value == 1) {
 				if(x < this.box.range.start) this.box.range.start = x;
 				if(x > this.box.range.end) this.box.range.end = x;
@@ -441,6 +442,7 @@ this._load = function(level, stage, container, title) {
 	}
 	this.box.x = this.box.range.end - this.box.range.start + 1;
 	this.box.y = this.box.range.bottom - this.box.range.top + 1;
+	this.box.z = this.box.shape.z;
 	
 	this._settitle();
 	this._setstatus(false, 0, 0);
@@ -457,6 +459,9 @@ this._load = function(level, stage, container, title) {
 */
 	}
 	this.box.nonedisplay = 0;
+
+	this.box.focus();
+	window.onresize = function(event) { this._mapresize() };
 }
 //if(this._element('container') != null) this._load(this._element('container'), this._element('titler'));
 
