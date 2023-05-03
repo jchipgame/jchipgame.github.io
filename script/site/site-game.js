@@ -349,12 +349,12 @@ this._relay = function() {
 	this.box.tb.cellSpacing=0;
 	this.box.tb.cellPadding=0; 
 	this.box.tb.style.fontSize = "3pt";
-	this.box.tb.style.marginTop = (this.box.z*(this.box.shape*5 - this.box.y)/2) + "px";
-	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape*5 - this.box.y)/2) + "px";
 
 	if(this.box.clientWidth && this.box.clientWidth < this.box.x * this.box.z) {
-		this.box.z = Math.ceil(this.box.clientWidth/this.box.x);
+		this.box.z = Math.floor((this.box.clientWidth-4)/this.box.x);
 	}
+	this.box.tb.style.marginTop = (this.box.z*(this.box.shape*5 - this.box.y)/2 + 4) + "px";
+	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape*5 - this.box.y)/2 + 4) + "px";
 	
 	for(var y=0; y<this.box.y; y++) {
 		var r = this.box.tb.insertRow(y);
@@ -438,7 +438,6 @@ this._load = function(level, stage, container, title) {
 			if(y > this.box.range.bottom) this.box.range.bottom = y;
 		}
 	}
-
 	this.box.x = this.box.range.end - this.box.range.start + 1;
 	this.box.y = this.box.range.bottom - this.box.range.top + 1;
 	
