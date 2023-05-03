@@ -17,7 +17,7 @@ this._mousedown = function(ev) {
 	if(this.box.run == 1) return false;
 	this.box.pressMode = button == 2 ? 2 : 0;
 	if(this.box.pressMode == 0) {
-		this.box.pressTimer = setTimeout(function() { this.box.pressMode = 1; this._mouseup(ev); }, 400);
+		this.box.pressTimer = setTimeout(function() { this.box.pressMode = 1; _mouseup(ev); }, 400);
 	}
 	return false;
 }
@@ -39,6 +39,18 @@ this._mouseup = function(ev) {
 	this.box.pressMode = -1;
 	_mapmark(-1);
 	if(this.box.run == 0) setTimeout("_runauto()", 50);
+}
+
+this._touchstart = function(ev) {
+	ev.preventDefault();
+	if(this.box.run == 1) return false;
+	this.box.pressMode = 0;
+	this.box.pressTimer = setTimeout(function() { this.box.pressMode = 1; _mouseup(ev); }, 400);
+}
+
+this._touchend = function(ev) {
+	ev.preventDefault();
+	_mouseup(ev);
 }
 
 this._manauto = function() {
@@ -329,7 +341,7 @@ this._redraw = function() {
 this._relay = function() {
 	this.box.tb = document.createElement("table");
 
-	this.box.tb.border = 0;
+	this.box.tb.border = 1;
 	this.box.tb.cellSpacing=0;
 	this.box.tb.cellPadding=0; 
 	this.box.tb.style.fontSize = "3pt";
@@ -347,6 +359,8 @@ this._relay = function() {
 			d.onmousedown = new Function("e", "_mousedown(e||window.event)");
 			d.onmousemove = new Function("e", "_mousedown(e||window.event)");
 			d.onmouseup = new Function("e", "_mouseup(e||window.event)");
+			d.ontouchstart = new Function("e", "_touchstart(e||window.event)");
+			d.ontouchend = new Function("e", "_touchend(e||window.event)");
 		}
 	}
 //	document.body.onkeydown = new Function("e", "_keydown(e||window.event)");
