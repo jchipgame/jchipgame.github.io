@@ -274,8 +274,6 @@ this._setvalue = function(x, y, value) {
 			if(this.box.ty == -1) value = 9; else if(this.box.ty == 1) value = 8;	
 			if(this.box.push) value += 4;
 		}
-		el.style.backgroundSize = "100% 100%";
-		el.style.backgroundRepeat = "no-repeat";
 		el.style.backgroundImage = "url("+this.box.images[value].src+")";
 	}
 }
@@ -338,24 +336,38 @@ this._redraw = function() {
 	}
 	_settitle();
 }
-this._relay = function() {
-	this.box.tb = document.createElement("table");
 
-	this.box.tb.border = 1;
+this._relay = function() {
+	this.box.images = new Array();
+	for(var x=0; x<14; x++) {
+		this.box.images[x] = new Image();
+		this.box.images[x].src = 'image'+'/'+'game'+'/'+'box'+x+'.jpg';
+	}
+
+	this.box.tb = document.createElement("table");
+	this.box.tb.border = 0;
 	this.box.tb.cellSpacing=0;
 	this.box.tb.cellPadding=0; 
 	this.box.tb.style.fontSize = "3pt";
+	this.box.tb.style.marginTop = (this.box.z*(this.box.shape*5 - this.box.y)/2) + "px";
+	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape*5 - this.box.y)/2) + "px";
+
+	if(this.box.clientWidth && this.box.clientWidth < this.box.x * this.box.z) {
+		this.box.z = Math.ceil(this.box.clientWidth/this.box.x);
+	}
+	
 	for(var y=0; y<this.box.y; y++) {
 		var r = this.box.tb.insertRow(y);
 		for(var x=0; x<this.box.x; x++) {
 			var d = r.insertCell(x);
 			d.x = x;
 			d.y = y;
-//			d.map = this.maps[y*this.box.x+x];
-			d.map = parseInt(this.box.map.charAt(y*this.box.x+x));
-			_setvalue(x, y, d.map);
+			d.map = this.box.map.charAt((y+this.box.range.top)*(this.box.shape*8)+(x+this.box.range.start));
+			_setvalue(x, y, parseInt(d.map));
 			d.style.width = this.box.z + "px";
 			d.style.height = this.box.z + "px";
+			d.style.backgroundSize = "100% 100%";
+			d.style.backgroundRepeat = "no-repeat";
 			d.onmousedown = new Function("e", "_mousedown(e||window.event)");
 			d.onmousemove = new Function("e", "_mousedown(e||window.event)");
 			d.onmouseup = new Function("e", "_mouseup(e||window.event)");
@@ -373,6 +385,7 @@ this._relay = function() {
 	}
 	this.box.appendChild(this.box.tb);
 }
+
 this._load = function(level, stage, container, title) {
 	if(container == null) return;
 	container.focus();
@@ -392,29 +405,43 @@ this._load = function(level, stage, container, title) {
 
 	this.box.rester = 0;
 	this.box.nonedisplay = 0;
-	off = this.box.stage.indexOf("8");
-	var map = this.box.stage.substring(0, off);
-	this.box.stage = this.box.stage.substring(off+1);
+	
+	var off = this.box.stage.indexOf("8");
+	this.box.map = this.box.stage.substring(0, off);
+	
+	var state = this.box.stage.substring(off+1);
+	off = state.lastIndexOf("401");
+	this.box.estimate = state.substring(0, off);
+	
+	state = state.substring(off+3);
+	off = state.lastIndexOf("0");
+	this.box.shape = state.substring(off+1);
 
-	off = this.box.stage.lastIndexOf("401");
-	var estimate = this.box.stage.substring(0, off);
-	this.box.stage = this.box.stage.substring(off+3);
-	off = this.box.stage.lastIndexOf("0");
-	var size = this.box.stage.substring(off+1);
-
-	this.box.images = new Array();
-	for(var x=0; x<14; x++) {
-		this.box.images[x] = new Image();
-		this.box.images[x].src = 'image'+'/'+'game'+'/'+'box'+x+'.jpg';
-	}
-
-	this.box.estimate = estimate;
-		
-	this.box.map = map;
-	this.box.x = size*8;
+	this.box.x = this.box.shape*8;
 	if(this.box.x == 32) { this.box.y = 20; this.box.z = 18; }
 	else if(this.box.x == 24) { this.box.y = 15; this.box.z = 24; }
 	else { this.box.y = 10; this.box.z = 36; }
+	
+	this.box.range = {start: this.box.x, end: 0, top: this.box.y, bottom: 0 };
+	for(var y=0; y<this.box.y; y++) {
+		var wall = false;
+		for(var x=0; x<this.box.x; x++) {
+			var value = parseInt(this.box.map.charAt(y*this.box.x+x));
+			if(value == 1) {
+				if(x < this.box.range.start) this.box.range.start = x;
+				if(x > this.box.range.end) this.box.range.end = x;
+				wall = true;
+			}
+		}
+		if(wall) {
+			if(y < this.box.range.top) this.box.range.top = y;
+			if(y > this.box.range.bottom) this.box.range.bottom = y;
+		}
+	}
+
+	this.box.x = this.box.range.end - this.box.range.start + 1;
+	this.box.y = this.box.range.bottom - this.box.range.top + 1;
+	
 	this._settitle();
 	this._setstatus(false, 0, 0);
 	this._relay();
