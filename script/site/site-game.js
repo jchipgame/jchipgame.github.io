@@ -354,8 +354,6 @@ this._relay = function() {
 			d.y = y;
 			d.map = this.box.map.charAt((y+this.box.range.top)*(this.box.shape.x)+(x+this.box.range.start));
 			_setvalue(x, y, parseInt(d.map));
-//			d.style.width = this.box.z + "px";
-//			d.style.height = this.box.z + "px";
 			d.style.backgroundSize = "100% 100%";
 			d.style.backgroundRepeat = "no-repeat";
 			d.onmousedown = new Function("e", "_mousedown(e||window.event)");
@@ -378,16 +376,16 @@ this._relay = function() {
 }
 this._mapresize = function() {
 	if(!this.box.clientWidth) return;
-	this.box.z = Math.floor(this.box.clientWidth/this.box.x);
-	this.box.z = this.box.z <= this.box.shape.z ? this.box.z : this.box.shape.z; 
-	this.box.z -= this.box.z * this.box.x + 4 > this.box.clientWidth ? 1 : 0;
-	this.box.tb.style.marginTop = (this.box.z*(this.box.shape.y - this.box.y)/2 + 4) + "px";
-	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape.y - this.box.y)/2 + 4) + "px";
+	var size = Math.floor(this.box.clientWidth/this.box.x);
+	size = size <= this.box.shape.z ? size : this.box.shape.z; 
+	size -= size * this.box.x + 4 > this.box.clientWidth ? 1 : 0;
+	this.box.tb.style.marginTop = (size*(this.box.shape.y - this.box.y)/2 + 4) + "px";
+	this.box.tb.style.marginBottom = (size*(this.box.shape.y - this.box.y)/2 + 4) + "px";
 	for(var y=0; y<this.box.y; y++) {
 		for(var x=0; x<this.box.x; x++) {
 			var d = this.box.tb.rows[y].cells[x];
-			d.style.width = this.box.z + "px";
-			d.style.height = this.box.z + "px";
+			d.style.width = size + "px";
+			d.style.height = size + "px";
 		}
 	}
 }
@@ -442,7 +440,6 @@ this._load = function(level, stage, container, title) {
 	}
 	this.box.x = this.box.range.end - this.box.range.start + 1;
 	this.box.y = this.box.range.bottom - this.box.range.top + 1;
-	this.box.z = this.box.shape.z;
 	
 	this._settitle();
 	this._setstatus(false, 0, 0);
