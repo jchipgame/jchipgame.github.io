@@ -351,7 +351,8 @@ this._relay = function() {
 	this.box.tb.style.fontSize = "3pt";
 
 	if(this.box.clientWidth && this.box.clientWidth < this.box.x * this.box.z) {
-		this.box.z = Math.floor((this.box.clientWidth-4)/this.box.x);
+		this.box.z = Math.floor(this.box.clientWidth/this.box.x);
+		this.box.z -= this.box.z * this.box.x + 4 > this.box.clientWidth ? 1 : 0;
 	}
 	this.box.tb.style.marginTop = (this.box.z*(this.box.shape*5 - this.box.y)/2 + 4) + "px";
 	this.box.tb.style.marginBottom = (this.box.z*(this.box.shape*5 - this.box.y)/2 + 4) + "px";
@@ -422,7 +423,7 @@ this._load = function(level, stage, container, title) {
 	else if(this.box.x == 24) { this.box.y = 15; this.box.z = 24; }
 	else { this.box.y = 10; this.box.z = 36; }
 	
-	this.box.range = {start: this.box.x, end: 0, top: this.box.y, bottom: 0 };
+	this.box.range = { start: this.box.x, end: 0, top: this.box.y, bottom: 0 };
 	for(var y=0; y<this.box.y; y++) {
 		var wall = false;
 		for(var x=0; x<this.box.x; x++) {
