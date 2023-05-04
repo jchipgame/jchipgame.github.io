@@ -21,7 +21,7 @@ app.controller('site-game-controll', function($scope, $document, gameService) {
         if($scope.stages != null) {
             $scope.stageCount = $scope.stages[$scope.gameIndex].length;
             $scope.stageMatrix = $scope.stages[$scope.gameIndex][$scope.stageIndex];
-            $scope.loadStage(stageIndex, $scope.stageMatrix, $scope.onSuccess);
+            $scope.loadStage();
         }
     };
 
@@ -32,14 +32,22 @@ app.controller('site-game-controll', function($scope, $document, gameService) {
 		});
     }
     
-    $scope.loadStage = function(stageIndex, stageMatrix, onSuccess) {
+    $scope.loadStage = function() {
 	    gameService.asynchCall(function() {
-	    	_load(stageIndex, stageMatrix, _element('container'), _element('titler'), onSuccess) 
+	    	_load($scope.stageIndex, $scope.stageMatrix, _element('container'), _element('titler'), $scope.onSuccess, $scope.keyPress); 
 	    });
     }
 
     $scope.moveStep = function(step) {
        	if(_toward) _toward(step);
+    }
+
+    $scope.keyPress = function(ev) {
+       	if(ev.keyCode == 33 && ev.altKey && $scope.stageIndex > 0) {
+      		$scope.selectStage($scope.gameIndex, $scope.stageIndex - 1);
+       	} else if(ev.keyCode == 34 && ev.altKey && $scope.stageIndex < $scope.stageCount - 1) {
+      		$scope.selectStage($scope.gameIndex, $scope.stageIndex + 1);
+      	}
     }
 
     $scope.onSuccess = function() {

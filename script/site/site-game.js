@@ -158,7 +158,7 @@ this._keydown = function(ev) {
 		this._settitle();
 		return;
 	}
-	if(ev.keyCode < 37 || ev.keyCode > 40) return false;
+	if(ev.keyCode < 37 || ev.keyCode > 40) { if(this.box.keypress) this.box.keypress(ev); return false; };
 	var step = step = ev.keyCode - 37;
 	var tx = step==0?-1:(step==2?+1:0);
 	var ty = step==1?-1:(step==3?+1:0);
@@ -389,7 +389,7 @@ this._mapresize = function() {
 	if(!this.box.clientWidth) return;
 	var size = Math.floor(this.box.clientWidth/this.box.x);
 	size = size <= this.box.shape.z ? size : this.box.shape.z; 
-	size -= size * this.box.x + 4 > this.box.clientWidth ? 1 : 0;
+	size -= size * this.box.x + 8 > this.box.clientWidth ? 1 : 0;
 	this.box.tb.style.marginTop = (size*(this.box.shape.y - this.box.y)/2 + 4) + "px";
 	this.box.tb.style.marginBottom = (size*(this.box.shape.y - this.box.y)/2 + 4) + "px";
 	for(var y=0; y<this.box.y; y++) {
@@ -400,7 +400,7 @@ this._mapresize = function() {
 		}
 	}
 }
-this._load = function(level, stage, container, title, success) {
+this._load = function(level, stage, container, title, success, keypress) {
 	if(container == null) return;
 
 	this.box = container;
@@ -408,6 +408,7 @@ this._load = function(level, stage, container, title, success) {
 	this.box.level = level;
 	this.box.stage = stage;
 	this.box.success = success;
+	this.box.keypress = keypress;
 
 	this.box.counter = 0;
 	this.box.pusher = 0;
