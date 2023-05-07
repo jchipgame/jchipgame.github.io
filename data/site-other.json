@@ -18,7 +18,7 @@
      "video":"",
      "links":[
      	"https://play.google.com/store/apps/details?id=com.jchip.wear.country.city",
-     	"https://apps.apple.com/ca/app/country-code-cities/id1619686364"
+     	"https://apps.apple.com/us/app/country-and-city/id1659163906"
      ]
   },
   {
@@ -29,7 +29,7 @@
      "video":"",
      "links":[
      	"https://play.google.com/store/apps/details?id=com.jchip.word.maker",
-     	"https://apps.apple.com/us/app/sokoban-gianta/id1617335915"
+     	"https://apps.apple.com/us/app/make-the-word/id6444748382"
      ]
   },
   {
@@ -39,8 +39,8 @@
      "description":"Make a Word for Wear OS is an implementation of the word challenge game, classic brain teasing addictive word games in the market. The goal of the word game is to make as many words as you can from given 3 - 9 letters.",
      "video":"",
      "links":[
-     	"https://play.google.com/store/apps/details?id=com.jchip.gianta",
-     	"https://apps.apple.com/us/app/sokoban-gianta/id1617335915"
+     	"https://play.google.com/store/apps/details?id=com.jchip.word.maker.wear",
+     	"https://apps.apple.com/us/app/make-a-word-watch/id6444740249"
      ]
   },
   {
@@ -52,7 +52,7 @@
      "links":["https://play.google.com/store/apps/details?id=com.jchip.phrases900"]
   },
   {
-     "index":"card",
+     "index":"word-card",
      "name":"Word Card",
      "introduce":"Learning English/Chinese (Simplified and Traditional) vocabulary.",
      "description":"Here is the tool to let you learn English/Chinese (Simplified and Traditional) vocabulary, and also support to put your vocabulary on your home screen widget, don't need to start an app and learn vocabulary in any spare time.",
