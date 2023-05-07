@@ -33,7 +33,7 @@
      ]
   },
   {
-     "index":"word.wear",
+     "index":"word-wear",
      "name":"Make a Word (Watch)",
      "introduce":"Make a word from letters, improve your vocabulary and your spelling on Wear OS.",
      "description":"Make a Word for Wear OS is an implementation of the word challenge game, classic brain teasing addictive word games in the market. The goal of the word game is to make as many words as you can from given 3 - 9 letters.",
