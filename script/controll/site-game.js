@@ -1,10 +1,24 @@
-app.controller('site-game-controll', function($scope, $document, gameService) {	
+app.controller('site-game-controll', function($scope, $cookies, $document, gameService) {	
     $scope.stages = null;
     
     $scope.gameIndex = 0;
     $scope.stageIndex = 0;
     $scope.stageCount = 0;
     $scope.stageMatrix = null;
+    
+    $scope.loadCookies = function() {
+    	var gameIndex = $cookies.get('gameIndex');
+    	var stageIndex = $cookies.get('stageIndex');
+    	if(gameIndex && stageIndex) {
+	    	$scope.gameIndex = parseInt(gameIndex);
+			$scope.stageIndex = parseInt(stageIndex);
+    	}
+    };
+    
+    $scope.saveCookies = function() {
+    	$cookies.put('gameIndex', $scope.gameIndex);
+    	$cookies.put('stageIndex', $scope.stageIndex);
+    };
     
     $scope.selectGame = function(gameIndex) {
         $scope.gameIndex = gameIndex;
@@ -18,6 +32,7 @@ app.controller('site-game-controll', function($scope, $document, gameService) {
     $scope.selectStage = function(gameIndex, stageIndex) {
         $scope.gameIndex = gameIndex;
         $scope.stageIndex = stageIndex;
+        $scope.saveCookies();
         if($scope.stages != null) {
             $scope.stageCount = $scope.stages[$scope.gameIndex].length;
             $scope.stageMatrix = $scope.stages[$scope.gameIndex][$scope.stageIndex];
@@ -59,5 +74,6 @@ app.controller('site-game-controll', function($scope, $document, gameService) {
        	$scope.selectStage($scope.gameIndex, $scope.stageIndex + 1);
     }
     
+    $scope.loadCookies();
     $scope.initStage($scope.gameIndex, $scope.stageIndex);
 });

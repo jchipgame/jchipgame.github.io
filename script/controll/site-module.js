@@ -1,4 +1,4 @@
-var app = angular.module('site-app', []);
+var app = angular.module('site-app', ['ngCookies']);
 app.filter('range', function() {
 	return function(input, total) {
 		total = parseInt(total);
