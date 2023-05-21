@@ -9,15 +9,19 @@ app.controller('site-game-controll', function($scope, $cookies, $document, gameS
     $scope.loadCookies = function() {
     	var gameIndex = $cookies.get('gameIndex');
     	var stageIndex = $cookies.get('stageIndex');
-    	if(gameIndex && stageIndex) {
+  			console.log("xx cookie gameIndex = " + gameIndex);
+ 	  	if(gameIndex && stageIndex) {
 	    	$scope.gameIndex = parseInt(gameIndex);
 			$scope.stageIndex = parseInt(stageIndex);
+			console.log("cookie gameIndex = " + $scope.gameIndex);
     	}
     };
     
     $scope.saveCookies = function() {
-    	$cookies.put('gameIndex', $scope.gameIndex);
-    	$cookies.put('stageIndex', $scope.stageIndex);
+		var expireDate = new Date();
+		expireDate.setDate(expireDate.getDate() + 365);
+    	$cookies.put('gameIndex', $scope.gameIndex, {'expires': expireDate});
+    	$cookies.put('stageIndex', $scope.stageIndex, {'expires': expireDate});
     };
     
     $scope.selectGame = function(gameIndex) {
