@@ -5,23 +5,36 @@ app.controller('site-game-controll', function($scope, $cookies, $document, gameS
     $scope.stageIndex = 0;
     $scope.stageCount = 0;
     $scope.stageMatrix = null;
+    $scope.stageList = ",";
     
     $scope.loadCookies = function() {
     	var gameIndex = $cookies.get('gameIndex');
     	var stageIndex = $cookies.get('stageIndex');
-  			console.log("xx cookie gameIndex = " + gameIndex);
  	  	if(gameIndex && stageIndex) {
 	    	$scope.gameIndex = parseInt(gameIndex);
 			$scope.stageIndex = parseInt(stageIndex);
-			console.log("cookie gameIndex = " + $scope.gameIndex);
     	}
+    	$scope.stageList = $cookies.get('stageList') ? $cookies.get('stageList') : ",";
     };
     
     $scope.saveCookies = function() {
 		var expireDate = new Date();
-		expireDate.setDate(expireDate.getDate() + 365);
+		expireDate.setDate(expireDate.getDate() + (365 * 3));
     	$cookies.put('gameIndex', $scope.gameIndex, {'expires': expireDate});
     	$cookies.put('stageIndex', $scope.stageIndex, {'expires': expireDate});
+    };
+
+    $scope.saveSuccess = function() {
+		var expireDate = new Date();
+		expireDate.setDate(expireDate.getDate() + (365 * 3));   	
+    	if($scope.stageList.indexOf("," + $scope.gameIndex + "." + $scope.stageIndex + ",") < 0) {
+    		$scope.stageList = $scope.stageList + $scope.gameIndex + "." + $scope.stageIndex + ",";
+    	}
+    	$cookies.put('stageList', $scope.stageList, {'expires': expireDate});
+    };
+    
+    $scope.isSuccessStage = function(gameIndex, stageIndex) {
+    	return $scope.stageList.indexOf("," + gameIndex + "." + stageIndex + ",") >= 0;
     };
     
     $scope.selectGame = function(gameIndex) {
@@ -70,6 +83,7 @@ app.controller('site-game-controll', function($scope, $cookies, $document, gameS
     }
 
     $scope.onSuccess = function() {
+		$scope.saveSuccess();
 		var modal = new bootstrap.Modal($document[0].querySelector('#successModal'));
 		modal.show();
 	}
