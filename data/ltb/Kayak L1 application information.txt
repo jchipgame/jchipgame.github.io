@@ -19,11 +19,11 @@ Tenants: Mahendran Ramasamy, Santhimaladevi Mahendran and Varshan Mahendran
 Address: 414 Kayak Street, Ottawa, ON. K2J6P2 
 
 -----------------------
-Eent ledger for this tenancy.
+Rent ledger for this tenancy.
 At the time of my L1 filing in May 2026, the arrears were $10,669.
-After that, rent continued to accrue for May, June, and July totaling $6,900.
-The tenant made payments of $2,300 during this period.
-After applying those payments, the current outstanding balance is $15,269.
-Plus the applacation fee is $186, the total balance is $15,455.
+After that, rent continued to accrue for May, June, and July totaling $4,600.
+The tenant made payments of $1,300 during this period.
+After applying those payments, the current outstanding balance is $13,969.
+Plus the applacation fee is $186, the total balance is $14,155.
 This is the total arrears as of July 5th.
 -----------------------
